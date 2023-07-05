@@ -53,6 +53,13 @@ const colors = {
   Zeb_Border_Grey: "rgba(176,176,176,1)",
   Zeb_Background_Grey: "rgba(213, 214, 215, 1)",
   Zeb_Solid_Blue: "rgba(50, 118, 222, 1)",
+
+  Docu_Solid_Purple: "#610BD9",
+  Docu_Solid_Grey: "#FAFAFA",
+  Docu_Solid_Blue: "#3678FF",
+  Docu_Solid_Light_Grey: "#9DAFBD",
+  Docu_Solid_Dark: "#10161B",
+  Docu_Solid_Text_Purple: "#4E39D0",
 };
 
 export default colors;

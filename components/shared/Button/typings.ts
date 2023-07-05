@@ -2,7 +2,7 @@ import { Interpolation, Theme } from "@emotion/react";
 
 export type ButtonSize = "small" | "medium" | "large" | "full-width";
 
-export type ButtonTypeAttribute = "button" | "reset" | "submit";
+export type ButtonTypeAttribute = "button" | "reset" | "submit" | "active";
 
 export type ButtonType =
   | "link"

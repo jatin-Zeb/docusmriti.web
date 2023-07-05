@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 
 export const landingContainer = css({
   height: "100%",
-  background: "rgb(248,248,248)",
+  background: colors.Docu_Solid_Dark,
 });
 
 export const body = css({
@@ -73,12 +73,12 @@ export const feature = css({
 export const heading = css({
   ...typography.H1_56_bold,
   width: "60%",
-  color: colors.Zeb_Solid_Dark,
+  color: colors.Zeb_Solid_White,
 });
 
 export const subHeading = css({
   ...typography.H5_20_semibold,
-  color: colors.Zeb_Solid_Dark_Grey,
+  color: colors.Docu_Solid_Grey,
 });
 
 export const main = css({

@@ -11,8 +11,8 @@ export const linkButton = css({
   boxShadow: "none",
   border: "none",
   outline: "none",
-  ...typography.C3_14,
-  color: colors.Zeb_Solid_Bright_Blue,
+  ...typography.B4_14_semibold,
+  color: colors.Docu_Solid_Light_Grey,
   "&.small": {
     ...typography.C4_12,
     color: colors.Zeb_Solid_Bright_Blue,
@@ -20,24 +20,24 @@ export const linkButton = css({
 });
 
 export const primaryButton = css({
-  background: colors.Zeb_Solid_Dark,
-  borderRadius: utils.remConverter(15),
+  background: colors.Docu_Solid_Purple,
+  borderRadius: utils.remConverter(5),
   boxShadow: "none",
   border: "none",
   outline: "none",
   whiteSpace: "nowrap",
-  ...typography.C4_12,
+  ...typography.B4_14_semibold,
   "&.small": {
-    padding: `${utils.remConverter(8)} ${utils.remConverter(12)}`,
-    ...typography.C4_12,
+    padding: `${utils.remConverter(8)} ${utils.remConverter(16)}`,
+    ...typography.B4_14_semibold,
   },
   "&.medium": {
-    padding: `${utils.remConverter(8)} ${utils.remConverter(12)}`,
-    ...typography.C4_12,
+    padding: `${utils.remConverter(10)} ${utils.remConverter(20)}`,
+    ...typography.B4_14_semibold,
   },
   "&.large": {
-    padding: `${utils.remConverter(8)} ${utils.remConverter(16)}`,
-    ...typography.C2_16,
+    padding: `${utils.remConverter(12)} ${utils.remConverter(24)}`,
+    ...typography.B4_14_semibold,
   },
   "&.full-width": {
     padding: `${utils.remConverter(8)} 0`,
@@ -136,7 +136,6 @@ export const tabButton = css({
   display: "flex",
   justifyContent: "center",
   flexGrow: 1,
-  textTransform: "uppercase",
   cursor: "pointer",
   "&.active": {
     background: colors.Zeb_Solid_Dark_Blue,
@@ -149,6 +148,9 @@ export const disabledButton = css({
   cursor: "not-allowed",
 });
 
+export const blueText = css({
+  color: colors.Docu_Solid_Blue,
+});
 export const blueButton = css({
   background: "#3878D9",
   borderRadius: utils.remConverter(8),
@@ -176,4 +178,4 @@ export const blueButton = css({
   "&:disabled": {
     background: "#d3d3d3",
   },
-})
+});
