@@ -23,6 +23,10 @@ function generateStyle(type: ButtonType, size: ButtonSize) {
     }
     case "blue":
       return styles.blueButton;
+    case "purple":
+      return styles.purpleButton;
+    case "white":
+      return styles.whiteButton;
     case "special":
       return [styles.specialButton, styles.specialButtonText];
   }

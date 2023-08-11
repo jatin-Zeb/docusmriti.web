@@ -303,6 +303,85 @@ const typography: Styles = {
 
     textTransform: "uppercase",
   },
+  Paragraph_16: {
+    fontFamily: "Exo 2",
+    fontSize: utils.remConverter(16),
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "normal",
+    letterSpacing: "0.32px"
+  },
+  H1_Title_60: {
+    fontFamily: "Exo 2",
+    fontSize: utils.remConverter(60),
+    fontStyle: "normal",
+    fontWeight: 600,
+    lineHeight: "64px",
+    letterSpacing: "1.2px",
+  },
+  H3_Title_25: {
+    fontFamily: "Exo 2",
+    fontSize: utils.remConverter(25),
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "normal",
+    letterSpacing: "0.5px"
+  },
+  H2_Title_35: {
+    fontFamily: "Exo 2",
+    fontSize: utils.remConverter(35),
+    fontStyle: "normal",
+    fontWeight: 600,
+    lineHeight: "normal",
+    letterSpacing: "0.7px"
+  },
+  H5_Title_18: {
+    fontFamily: "Exo 2",
+    fontSize: utils.remConverter(18),
+    fontStyle: "normal",
+    fontWeight: 700,
+    lineHeight: "normal",
+    letterSpacing: "0.36px"
+  },
+  H4_Title_18: {
+    fontFamily: "Exo 2",
+    fontSize: utils.remConverter(18),
+    fontStyle: "normal",
+    fontWeight: 700,
+    lineHeight: "normal",
+    letterSpacing: "0.36px"
+  },
+  H1_Title_20: {
+    leadingTrim: "both",
+    textEdge: "cap",
+    fontFamily: "Exo 2",
+    fontSize: utils.remConverter(20),
+    fontStyle: "normal",
+    fontWeight: 500,
+    lineHeight: "normal",
+    letterSpacing: "0.4px",
+    textTransform: "uppercase"
+  },
+  H1_Text_16: {
+    leadingTrim: "both",
+    textEdge: "cap",
+    fontFamily: "Exo 2",
+    fontSize: utils.remConverter(16),
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "35px",
+    letterSpacing: "0.32px"
+  },
+  Sub_Paragraph_14: {
+    leadingTrim: "both",
+    textEdge: "cap",
+    fontFamily: "Exo 2",
+    fontSize: utils.remConverter(14),
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "normal",
+    letterSpacing: "0.28px"
+  }
 };
 
 export default typography;
