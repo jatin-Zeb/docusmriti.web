@@ -58,7 +58,14 @@ const colors = {
   Zeb_Secondary_Text: "rgba(213, 205, 251, 1)",
   Zeb_Card_Background_Dark: "rgba(23, 18, 53, 1)",
   Zeb_Divider_Purple: "#312961",
-  Zeb_Primary_Gradient: "linear-gradient(90deg, #431BEF 0%, #906CFF 100%)"
+  Zeb_Primary_Gradient: "linear-gradient(90deg, #431BEF 0%, #906CFF 100%)",
+
+  Docu_Solid_Purple: "#610BD9",
+  Docu_Solid_Grey: "#FAFAFA",
+  Docu_Solid_Blue: "#3678FF",
+  Docu_Solid_Light_Grey: "#9DAFBD",
+  Docu_Solid_Dark: "#10161B",
+  Docu_Solid_Text_Purple: "#4E39D0",
 };
 
 export default colors;

@@ -3,9 +3,18 @@ import { Loading } from "@web3uikit/core";
 import * as React from "react";
 import { colors } from "../../../styles1";
 import * as styles from "./styles";
-import { ButtonProps, ButtonSize, ButtonType } from "./typings";
+import {
+  ButtonProps,
+  ButtonSize,
+  ButtonType,
+  ButtonTypeAttribute,
+} from "./typings";
 
-function generateStyle(type: ButtonType, size: ButtonSize) {
+function generateStyle(
+  type: ButtonType,
+  size: ButtonSize,
+  typeAttribute: ButtonTypeAttribute
+) {
   switch (type) {
     case "primary":
       return styles.primaryButton;
@@ -14,7 +23,7 @@ function generateStyle(type: ButtonType, size: ButtonSize) {
     case "tertiary":
       return [styles.tertiaryButton, styles.tertiaryButtonText];
     case "link":
-      return styles.linkButton;
+      return [styles.linkButton, typeAttribute === "active" && styles.blueText];
     case "tab": {
       if (size === "small") {
         return [styles.tabButton, styles.specialButtonSmText];
@@ -49,10 +58,10 @@ const Button: React.FC<ButtonProps> = (props) => {
       onClick={onClick}
       disabled={disabled}
       className={size}
-      type={typeAttribute}
+      type={typeAttribute !== "active" ? typeAttribute : undefined}
       css={[
         styles.general,
-        generateStyle(type, size),
+        generateStyle(type, size, typeAttribute),
         style,
         disabled && styles.disabledButton,
       ]}
