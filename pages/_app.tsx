@@ -13,6 +13,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     const store = getOrCreateStore();
   return (
     <GoogleOAuthProvider clientId="527459920507-7gqnqi9mfcebn2vog45sk33h7ott9iac.apps.googleusercontent.com">
+      <link href="https://fonts.cdnfonts.com/css/exo-2" rel="stylesheet" />   
+           
       <Provider store={store}>
         <ContractHandler>
           <ThirdwebProvider desiredChainId={activeChainId}>

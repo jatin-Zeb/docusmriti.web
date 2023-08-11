@@ -178,4 +178,69 @@ export const blueButton = css({
   "&:disabled": {
     background: "#d3d3d3",
   },
-});
+})
+
+export const purpleButton = css({
+  background: colors.Zeb_Primary_Purple,
+  borderRadius: utils.remConverter(24),
+  boxShadow: "none",
+  border: "none",
+  outline: "none",
+  whiteSpace: "nowrap",
+  height: utils.remConverter(48),
+  display: "flex",
+  alignItems: "center",
+  ...typography.Paragraph_16,
+  "&.small": {
+    padding: `${utils.remConverter(8)} ${utils.remConverter(12)}`,
+    ...typography.C4_12,
+  },
+  "&.medium": {
+    padding: `${utils.remConverter(18)} ${utils.remConverter(30)}`,
+    ...typography.Paragraph_16,
+  },
+  "&.large": {
+    padding: `${utils.remConverter(8)} ${utils.remConverter(16)}`,
+    ...typography.C2_16,
+  },
+  "&.full-width": {
+    padding: `${utils.remConverter(8)} 0`,
+    width: "100%",
+  },
+  "&:disabled": {
+    background: "#d3d3d3",
+  },
+})
+
+export const whiteButton = css({
+  background: colors.Zeb_Solid_White,
+  borderRadius: utils.remConverter(24),
+  boxShadow: "none",
+  border: "none",
+  outline: "none",
+  whiteSpace: "nowrap",
+  height: utils.remConverter(48),
+  display: "flex",
+  alignItems: "center",
+  color: colors.Zeb_Solid_BG_Dark_blue,
+  ...typography.Paragraph_16,
+  "&.small": {
+    padding: `${utils.remConverter(8)} ${utils.remConverter(12)}`,
+    ...typography.C4_12,
+  },
+  "&.medium": {
+    padding: `${utils.remConverter(18)} ${utils.remConverter(30)}`,
+    ...typography.Paragraph_16,
+  },
+  "&.large": {
+    padding: `${utils.remConverter(8)} ${utils.remConverter(16)}`,
+    ...typography.C2_16,
+  },
+  "&.full-width": {
+    padding: `${utils.remConverter(8)} 0`,
+    width: "100%",
+  },
+  "&:disabled": {
+    background: "#d3d3d3",
+  },
+})
