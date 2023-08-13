@@ -2,7 +2,7 @@
 import * as styles from "./styles";
 import { useCallback, useState } from "react";
 import { DatePicker, Form, Input, Select, Steps, Typography } from "antd";
-import Button from "../shared/Button";
+import Button from "../Shared/Button";
 import { colors, mixins } from "../../styles1";
 import UploadAadhar from "./UploadAadhar";
 import AddSelfie from "./AddSelfie";

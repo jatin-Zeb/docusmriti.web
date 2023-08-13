@@ -6,7 +6,7 @@ import { useEffect, useState, useContext } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
-import Button from "../components/shared/Button";
+import Button from "../components/Shared/Button";
 import { blobToSHA256 } from "file-to-sha256";
 import { ContractContextType } from "../components/UserHome/Contract/context";
 import { contractContext } from "../components/UserHome/Contract";

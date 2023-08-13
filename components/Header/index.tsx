@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import * as styles from "./styles";
-import Button from "../shared/Button";
+import Button from "../Shared/Button";
 import { BellOutlined } from "@ant-design/icons";
 
 const Header = () => {

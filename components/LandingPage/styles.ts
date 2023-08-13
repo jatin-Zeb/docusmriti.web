@@ -138,7 +138,7 @@ export const landingPageContainer = css({
   background: colors.Zeb_Solid_BG_Dark_blue,
   display: "flex",
   flexDirection: "column",
-  alignItems: "center"
+  alignItems: "center",
 });
 
 export const header = css({
@@ -151,15 +151,15 @@ export const header = css({
 });
 
 export const menuContainer = css({
-  justifyContent: 'center',
-  alignItems: 'center',
+  justifyContent: "center",
+  alignItems: "center",
   gap: utils.remConverter(24),
-  display: 'flex'
+  display: "flex",
 });
 
 export const menuItem = css({
   ...typography.Paragraph_16,
-  color: colors.Zeb_Secondary_Text
+  color: colors.Zeb_Secondary_Text,
 });
 
 export const container1 = css({
@@ -169,25 +169,25 @@ export const container1 = css({
   maxWidth: utils.remConverter(1120),
   padding: utils.remConverter(24),
   marginTop: utils.remConverter(120),
-  overflowX: "hidden"
+  overflowX: "hidden",
 });
 
 export const mainText = css({
   flex: 1,
-  paddingRight: "15%"
+  paddingRight: "15%",
 });
 
 export const bigText = css({
-  ...typography.H1_Title_60
+  ...typography.H1_Title_60,
 });
 
 export const smallText = css({
   marginTop: utils.remConverter(30),
-  ...typography.H3_Title_25
+  ...typography.H3_Title_25,
 });
 
 export const startButton = css({
-  marginTop: utils.remConverter(30)
+  marginTop: utils.remConverter(30),
 });
 
 export const mainImage = css({
@@ -202,6 +202,11 @@ export const mainImage = css({
 export const bgImg1 = css({
   position: "absolute",
   bottom: 0,
+  backgroundImage: `url(/images/bgImg1.svg)`,
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+  width: "100%",
+  height: "20%",
 });
 
 export const outer = css({
@@ -209,8 +214,8 @@ export const outer = css({
   display: "flex",
   justifyContent: "center",
   position: "relative",
-  overflowX: "hidden"
-}); 
+  overflowX: "hidden",
+});
 
 export const container2 = css({
   ...typography.H2_Title_35,
@@ -220,7 +225,7 @@ export const container2 = css({
   flexDirection: "column",
   alignItems: "center",
   padding: `0 ${utils.remConverter(24)}`,
-  position: "relative"
+  position: "relative",
 });
 
 export const circle = css({
@@ -232,7 +237,7 @@ export const circle = css({
   opacity: 0.3,
   filter: "blur(92px)",
   left: 0,
-  bottom: 0
+  bottom: 0,
 });
 
 export const videoContainer = css({
@@ -248,7 +253,7 @@ export const videoContainer = css({
   border: `2px solid ${colors.Zeb_Divider_Purple}`,
   borderRadius: utils.remConverter(16),
   marginBottom: utils.remConverter(150),
-  zIndex: 1
+  zIndex: 1,
 });
 
 export const container3 = css({
@@ -256,25 +261,25 @@ export const container3 = css({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  background: colors.Zeb_Primary_Gradient
+  background: colors.Zeb_Primary_Gradient,
 });
 
 export const whyTitle = css({
   ...typography.H2_Title_35,
   marginTop: utils.remConverter(94),
-  marginBottom: utils.remConverter(100)
+  marginBottom: utils.remConverter(100),
 });
 
 export const whyContent = css({
   display: "flex",
   flexDirection: "column",
   gap: utils.remConverter(60),
-  marginBottom: utils.remConverter(100)
+  marginBottom: utils.remConverter(100),
 });
 
 export const content1 = css({
   display: "flex",
-  gap: utils.remConverter(20)
+  gap: utils.remConverter(20),
 });
 
 export const row = css({
@@ -283,13 +288,13 @@ export const row = css({
   maxWidth: utils.remConverter(900),
   gap: "5%",
   div: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 export const contentTitle = css({
   ...typography.H5_Title_18,
-  color: colors.Zeb_Solid_White
+  color: colors.Zeb_Solid_White,
 });
 
 export const textContent = css({
@@ -297,8 +302,8 @@ export const textContent = css({
   flexDirection: "column",
   justifyContent: "space-around",
   div: {
-    flex: 0
-  }
+    flex: 0,
+  },
 });
 
 export const content4 = css({
@@ -306,24 +311,24 @@ export const content4 = css({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  position: "relative"
+  position: "relative",
 });
 
 export const title4 = css({
   ...typography.H2_Title_35,
   marginTop: utils.remConverter(150),
-  marginBottom: utils.remConverter(60)
+  marginBottom: utils.remConverter(60),
 });
 
 export const textTitle4 = css({
   ...typography.H4_Title_18,
-  marginBottom: utils.remConverter(19)
+  marginBottom: utils.remConverter(19),
 });
 
 export const textContainer4 = css({
   display: "flex",
   gap: utils.remConverter(40),
-  alignItems: "center"
+  alignItems: "center",
 });
 
 export const cardContainer = css({
@@ -334,7 +339,7 @@ export const cardContainer = css({
 });
 
 export const text4 = css({
-  maxWidth: utils.remConverter(300)
+  maxWidth: utils.remConverter(300),
 });
 
 export const underline = css({
@@ -346,13 +351,13 @@ export const underline = css({
 export const title42 = css({
   ...typography.H2_Title_35,
   marginTop: utils.remConverter(150),
-})
+});
 
 export const subtitle = css({
   ...typography.Paragraph_16,
   maxWidth: utils.remConverter(444),
   marginTop: utils.remConverter(30),
-  textAlign: "center"
+  textAlign: "center",
 });
 
 export const priceContainer = css({
@@ -362,7 +367,7 @@ export const priceContainer = css({
   justifyContent: "space-around",
   flexWrap: "wrap",
   paddingBottom: utils.remConverter(100),
-  overflow: "hidden"
+  overflow: "hidden",
 });
 
 export const priceCard = css({
@@ -370,7 +375,7 @@ export const priceCard = css({
   width: utils.remConverter(360),
   background: colors.Zeb_Card_Background_Dark,
   borderRadius: utils.remConverter(16),
-  zIndex: 1
+  zIndex: 1,
 });
 
 export const div1 = css({
@@ -380,23 +385,23 @@ export const div1 = css({
 });
 
 export const div2 = css({
-  padding: utils.remConverter(50)
-})
+  padding: utils.remConverter(50),
+});
 
 export const feeRow = css({
   display: "flex",
   gap: utils.remConverter(10),
   alignItems: "center",
-  marginBottom: utils.remConverter(16)
+  marginBottom: utils.remConverter(16),
 });
 
 export const feeButton = css({
-  marginTop: utils.remConverter(40)
+  marginTop: utils.remConverter(40),
 });
 
 export const feeTitle = css({
   ...typography.H3_Title_25,
-  marginBottom: utils.remConverter(19)
+  marginBottom: utils.remConverter(19),
 });
 
 export const fees = css({
@@ -404,7 +409,7 @@ export const fees = css({
 });
 
 export const feeContainer = css({
-  marginTop: utils.remConverter(30)
+  marginTop: utils.remConverter(30),
 });
 
 export const circle2 = css({
@@ -416,7 +421,7 @@ export const circle2 = css({
   opacity: 0.3,
   filter: "blur(92px)",
   top: utils.remConverter(250),
-  right: 0
+  right: 0,
 });
 
 export const footer = css({
@@ -433,23 +438,23 @@ export const footer = css({
     flexDirection: "column",
     alignItems: "center",
     gap: utils.remConverter(50),
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });
 
 export const foot1 = css({
   display: "flex",
   flexDirection: "column",
-  gap: utils.remConverter(30)
+  gap: utils.remConverter(30),
 });
 
 export const foothead = css({
-  ...typography.H1_Title_20
+  ...typography.H1_Title_20,
 });
 
 export const footText = css({
   ...typography.H1_Text_16,
-  color: colors.Zeb_Secondary_Text
+  color: colors.Zeb_Secondary_Text,
 });
 
 export const finalFooter = css({
@@ -465,8 +470,8 @@ export const finalFooter = css({
     flexDirection: "column",
     alignItems: "center",
     gap: utils.remConverter(20),
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });
 
 export const loginContainer = css({
@@ -477,7 +482,7 @@ export const loginContainer = css({
   border: `2px solid ${colors.Zeb_Divider_Purple}`,
   top: utils.remConverter(68),
   right: 0,
-  zIndex: 3
+  zIndex: 3,
 });
 
 export const loginButton = css({
@@ -487,7 +492,7 @@ export const loginButton = css({
 export const polygon = css({
   position: "absolute",
   top: -10,
-  right: 20
+  right: 20,
 });
 
 export const loginHeader = css({
@@ -495,13 +500,13 @@ export const loginHeader = css({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  marginBottom: utils.remConverter(30)
+  marginBottom: utils.remConverter(30),
 });
 
 export const loginOptions = css({
   display: "flex",
   flexDirection: "column",
-  gap: utils.remConverter(20)
+  gap: utils.remConverter(20),
 });
 
 export const option = css({
@@ -513,7 +518,7 @@ export const option = css({
   display: "flex",
   gap: utils.remConverter(10),
   alignItems: "center",
-  cursor: "pointer"
+  cursor: "pointer",
 });
 
 export const overlay = css({
@@ -522,15 +527,15 @@ export const overlay = css({
   bottom: 0,
   left: 0,
   right: 0,
-  zIndex: 2
+  zIndex: 2,
 });
 
 export const profileContainer = css({
   display: "flex",
   gap: utils.remConverter(15),
-  alignItems: "center"
+  alignItems: "center",
 });
 
 export const name = css({
-  ...typography.Paragraph_16
-})
+  ...typography.Paragraph_16,
+});
