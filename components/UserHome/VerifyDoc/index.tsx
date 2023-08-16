@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import { Form, Badge, Tag } from "antd";
 import { Upload } from "@web3uikit/core";
-import Button from "../../shared/Button";
+import Button from "../../Shared/Button";
 import * as styles from "./styles";
 import { blobToSHA256 } from "file-to-sha256";
 import { ContractContextType } from "../Contract/context";

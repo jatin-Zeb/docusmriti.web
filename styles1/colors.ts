@@ -56,10 +56,10 @@ const colors = {
   Zeb_Solid_BG_Dark_blue: "rgba(28, 22, 65, 1)",
   Zeb_Primary_Purple: "rgba(67, 27, 239, 1)",
   Zeb_Secondary_Text: "rgba(213, 205, 251, 1)",
-  Zeb_Card_Background_Dark: "rgba(23, 18, 53, 1)",
+  Zeb_Card_Background_Dark: "#171235",
   Zeb_Divider_Purple: "#312961",
   Zeb_Primary_Gradient: "linear-gradient(90deg, #431BEF 0%, #906CFF 100%)",
-
+  Zeb_Dark_Background: "#1C1641",
   Docu_Solid_Purple: "#610BD9",
   Docu_Solid_Grey: "#FAFAFA",
   Docu_Solid_Blue: "#3678FF",

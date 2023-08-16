@@ -24,7 +24,7 @@ import { blobToSHA256 } from "file-to-sha256";
 import { MoreOutlined, UploadOutlined } from "@ant-design/icons";
 import { ContractContextType } from "./../Contract/context";
 import { contractContext } from "./../Contract";
-import Button from "../../shared/Button";
+import Button from "../../Shared/Button";
 import {
   acceptContract,
   addNewContract,

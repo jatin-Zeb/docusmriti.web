@@ -1,4 +1,4 @@
 export type SideBarTabs = "home" | "profile" | "docs" | "setting";
-export interface SideBarProps {
+export interface TopBarProps {
   selected: SideBarTabs;
 }

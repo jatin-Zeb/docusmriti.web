@@ -16,7 +16,7 @@ import { KYCDocs } from "../../../reducers/kyc";
 import { UserState } from "../../../reducers/userInfo";
 import { colors, mixins, typography } from "../../../styles1";
 import KycHome from "../../Kyc";
-import Button from "../../shared/Button";
+import Button from "../../Shared/Button";
 import * as styles from "./styles";
 
 const UserDetails = () => {
