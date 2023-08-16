@@ -1,21 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import * as styles from "./styles";
 import {
-  MenuOutlined,
-  SettingFilled,
-  FileTextOutlined,
   SettingOutlined,
-  FileTextFilled,
-  RobotOutlined,
-  RobotFilled,
   HomeOutlined,
   FileProtectOutlined,
   UserOutlined,
   UserAddOutlined,
 } from "@ant-design/icons";
 import { SideBarProps } from "./typings";
-import { Button, FloatButton } from "antd";
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Docu_logo from "public/Docu_logo.svg";

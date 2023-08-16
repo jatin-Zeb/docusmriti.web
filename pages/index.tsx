@@ -24,7 +24,7 @@ import cross from "public/icons/crossIcon.svg";
 import google from "public/icons/google.svg";
 import facebook from "public/icons/facebook.svg";
 import twitter from "public/icons/twitter.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   getLoginDetails,
   setGoogleLoginData,
@@ -38,6 +38,7 @@ import {
 } from "@react-oauth/google";
 import axios from "axios";
 import { fetchKycData, setKycStatus } from "../actions/kyc";
+import { utils } from "../styles1";
 
 // @ts-nocheck
 const Home: NextPage = () => {
@@ -52,6 +53,11 @@ const Home: NextPage = () => {
   );
   const [openModal, setOpenModal] = useState(false);
   const [googleToken, setGoogleToken] = useState("");
+  const howItWorksRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
+  const solutionsRef = useRef<HTMLDivElement>(null);
+  const pricingRef = useRef<HTMLDivElement>(null);
+
   const profile = userState.googleData;
   useEffect(() => {
     const sessionToken = sessionStorage.getItem("google_token");
@@ -166,10 +172,38 @@ const Home: NextPage = () => {
       <div css={styles.header}>
         <Image src={Docu_logo} alt="" />
         <div css={styles.menuContainer}>
-          <div css={styles.menuItem}>How it works</div>
-          <div css={styles.menuItem}>Features</div>
-          <div css={styles.menuItem}>Solutions</div>
-          <div css={styles.menuItem}>Pricing</div>
+          <div
+            css={styles.menuItem}
+            onClick={() => {
+              howItWorksRef.current?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            How it works
+          </div>
+          <div
+            css={styles.menuItem}
+            onClick={() => {
+              featuresRef.current?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Features
+          </div>
+          <div
+            css={styles.menuItem}
+            onClick={() => {
+              solutionsRef.current?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Solutions
+          </div>
+          <div
+            css={styles.menuItem}
+            onClick={() => {
+              pricingRef.current?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Pricing
+          </div>
         </div>
         {userState.isLoggedIn ? (
           <>
@@ -227,7 +261,7 @@ const Home: NextPage = () => {
           </>
         )}
       </div>
-      <div css={styles.outer}>
+      <div css={[styles.outer, { marginBottom: utils.remConverter(130) }]}>
         <div css={styles.container1}>
           <div css={styles.mainText}>
             <div css={styles.bigText}>
@@ -247,12 +281,12 @@ const Home: NextPage = () => {
         </div>
         <div css={styles.bgImg1} />
       </div>
-      <div css={styles.container2}>
+      <div css={styles.container2} ref={howItWorksRef}>
         <div>How it works</div>
         <div css={styles.videoContainer}>video player</div>
         <div css={styles.circle}></div>
       </div>
-      <div css={styles.container3}>
+      <div css={styles.container3} ref={featuresRef}>
         <div css={styles.whyTitle}>Why choose Documsmriti?</div>
         <div css={styles.whyContent}>
           <div css={styles.row}>
@@ -299,7 +333,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div css={styles.content4}>
+      <div css={styles.content4} ref={solutionsRef}>
         <div css={styles.title4}>Solutions</div>
         <div css={styles.cardContainer}>
           <div css={styles.textContainer4}>
@@ -327,106 +361,126 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        <div css={styles.title42}>Pricing</div>
-        <div css={styles.subtitle}>
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page.
-        </div>
-        <div css={styles.priceContainer}>
-          <div css={styles.priceCard}>
-            <div css={styles.div1}>
-              <div css={styles.feeTitle}>Free</div>
-              <div>
-                It is a long established fact that a reader will be distracted.
-              </div>
-              <div css={styles.feeContainer}>
-                <span css={styles.fees}>$0.00</span> / Month
-              </div>
-            </div>
-            <div css={styles.div2}>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                Upto 3 persons
-              </div>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                10 GB Cloud storage
-              </div>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                Unlimited file upload
-              </div>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                Free access to server
-              </div>
-              <Button style={styles.feeButton} type="white" onClick={() => {}}>
-                Get started
-              </Button>
-            </div>
+        <div
+          css={[styles.content4, { paddingTop: utils.remConverter(20) }]}
+          ref={pricingRef}
+        >
+          <div css={styles.title42}>Pricing</div>
+          <div css={styles.subtitle}>
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page.
           </div>
-          <div css={styles.priceCard}>
-            <div css={styles.div1}>
-              <div css={styles.feeTitle}>Individuals</div>
-              <div>
-                It is a long established fact that a reader will be distracted.
+          <div css={styles.priceContainer}>
+            <div css={styles.priceCard}>
+              <div css={styles.div1}>
+                <div css={styles.feeTitle}>Free</div>
+                <div>
+                  It is a long established fact that a reader will be
+                  distracted.
+                </div>
+                <div css={styles.feeContainer}>
+                  <span css={styles.fees}>$0.00</span> / Month
+                </div>
               </div>
-              <div css={styles.feeContainer}>
-                <span css={styles.fees}>$12.99</span> / Month
-              </div>
-            </div>
-            <div css={styles.div2}>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                Upto 3 persons
-              </div>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                10 GB Cloud storage
-              </div>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                Unlimited file upload
-              </div>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                Free access to server
-              </div>
-              <Button style={styles.feeButton} type="white" onClick={() => {}}>
-                Get started
-              </Button>
-            </div>
-          </div>
-          <div css={styles.priceCard}>
-            <div css={styles.div1}>
-              <div css={styles.feeTitle}>Institutions</div>
-              <div>
-                It is a long established fact that a reader will be distracted.
-              </div>
-              <div css={styles.feeContainer}>
-                <span css={styles.fees}>$24.99</span> / Month
+              <div css={styles.div2}>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  Upto 3 persons
+                </div>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  10 GB Cloud storage
+                </div>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  Unlimited file upload
+                </div>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  Free access to server
+                </div>
+                <Button
+                  style={styles.feeButton}
+                  type="white"
+                  onClick={() => {}}
+                >
+                  Get started
+                </Button>
               </div>
             </div>
-            <div css={styles.div2}>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                Upto 3 persons
+            <div css={styles.priceCard}>
+              <div css={styles.div1}>
+                <div css={styles.feeTitle}>Individuals</div>
+                <div>
+                  It is a long established fact that a reader will be
+                  distracted.
+                </div>
+                <div css={styles.feeContainer}>
+                  <span css={styles.fees}>$12.99</span> / Month
+                </div>
               </div>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                10 GB Cloud storage
+              <div css={styles.div2}>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  Upto 3 persons
+                </div>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  10 GB Cloud storage
+                </div>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  Unlimited file upload
+                </div>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  Free access to server
+                </div>
+                <Button
+                  style={styles.feeButton}
+                  type="white"
+                  onClick={() => {}}
+                >
+                  Get started
+                </Button>
               </div>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                Unlimited file upload
+            </div>
+            <div css={styles.priceCard}>
+              <div css={styles.div1}>
+                <div css={styles.feeTitle}>Institutions</div>
+                <div>
+                  It is a long established fact that a reader will be
+                  distracted.
+                </div>
+                <div css={styles.feeContainer}>
+                  <span css={styles.fees}>$24.99</span> / Month
+                </div>
               </div>
-              <div css={styles.feeRow}>
-                <Image src={tickImg} alt="" />
-                Free access to server
+              <div css={styles.div2}>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  Upto 3 persons
+                </div>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  10 GB Cloud storage
+                </div>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  Unlimited file upload
+                </div>
+                <div css={styles.feeRow}>
+                  <Image src={tickImg} alt="" />
+                  Free access to server
+                </div>
+                <Button
+                  style={styles.feeButton}
+                  type="white"
+                  onClick={() => {}}
+                >
+                  Get started
+                </Button>
               </div>
-              <Button style={styles.feeButton} type="white" onClick={() => {}}>
-                Get started
-              </Button>
             </div>
           </div>
         </div>

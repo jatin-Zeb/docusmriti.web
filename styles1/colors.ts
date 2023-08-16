@@ -66,6 +66,7 @@ const colors = {
   Docu_Solid_Light_Grey: "#9DAFBD",
   Docu_Solid_Dark: "#10161B",
   Docu_Solid_Text_Purple: "#4E39D0",
+  Docu_Seondary_Text: "#D5CDFB",
 };
 
 export default colors;

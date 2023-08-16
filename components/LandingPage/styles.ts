@@ -1,5 +1,5 @@
 import { colors, utils, typography, mixins } from "../../styles1";
-import { css } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 
 // export const landingContainer = css({
 //   height: "100%",
@@ -160,6 +160,7 @@ export const menuContainer = css({
 export const menuItem = css({
   ...typography.Paragraph_16,
   color: colors.Zeb_Secondary_Text,
+  cursor: "pointer",
 });
 
 export const container1 = css({
@@ -171,10 +172,18 @@ export const container1 = css({
   marginTop: utils.remConverter(120),
   overflowX: "hidden",
 });
-
+const fadeSlide = keyframes({
+  "0%": {
+    opacity: 0,
+  },
+  "100%": {
+    opacity: 1,
+  },
+});
 export const mainText = css({
   flex: 1,
   paddingRight: "15%",
+  animation: `${fadeSlide} 0.7s ease-in`,
 });
 
 export const bigText = css({
@@ -190,6 +199,17 @@ export const startButton = css({
   marginTop: utils.remConverter(30),
 });
 
+const fadeIn = keyframes({
+  "0%": {
+    marginBottom: utils.remConverter(50),
+    opacity: 0,
+  },
+  "100%": {
+    marginBottom: utils.remConverter(0),
+    opacity: 1,
+  },
+});
+
 export const mainImage = css({
   flex: 1,
   zIndex: 1,
@@ -197,6 +217,8 @@ export const mainImage = css({
   justifyContent: "center",
   alignItems: "center",
   width: "50%",
+  transition: "fade-in",
+  animation: `${fadeIn} 0.7s ease-in`,
 });
 
 export const bgImg1 = css({
@@ -219,12 +241,14 @@ export const outer = css({
 
 export const container2 = css({
   ...typography.H2_Title_35,
-  marginTop: utils.remConverter(150),
+
   width: "100%",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  padding: `0 ${utils.remConverter(24)}`,
+  padding: `${utils.remConverter(20)} ${utils.remConverter(
+    24
+  )} 0rem ${utils.remConverter(24)}`,
   position: "relative",
 });
 
@@ -336,6 +360,7 @@ export const cardContainer = css({
   justifyContent: "space-around",
   flexWrap: "wrap",
   gap: utils.remConverter(100),
+  marginBottom: utils.remConverter(100),
 });
 
 export const text4 = css({
@@ -350,7 +375,6 @@ export const underline = css({
 
 export const title42 = css({
   ...typography.H2_Title_35,
-  marginTop: utils.remConverter(150),
 });
 
 export const subtitle = css({
