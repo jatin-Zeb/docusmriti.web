@@ -16,7 +16,7 @@ import {
   Tooltip,
 } from "antd";
 import React, { useEffect, useState, useContext, useCallback } from "react";
-import { colors, mixins, typography } from "../../../styles1";
+import { colors, mixins, typography, utils } from "../../../styles1";
 import { NFTStorage, File } from "nft.storage";
 import * as styles from "./styles";
 import { NFT_TOKEN } from "../../../constants/constants";
@@ -41,6 +41,7 @@ import Image from "next/image";
 import VerifyDoc from "../VerifyDoc";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AssetsImg from "@public/index";
 
 enum ModalType {
   VIEW_PARTICIPANTS = 1,
@@ -61,9 +62,7 @@ const UserDocuments = () => {
   const { all, signed, pending } = useSelector<StoreState, UploadedDocsProps>(
     (state) => state.docs.uploadedDocs
   );
-  const isDocsLoading = useSelector<StoreState, boolean>(
-    (state) => state.docs.isLoading
-  );
+  const isDocsLoading = false;
   const [submitButton, setSubmitButton] = useState("");
   const { isLoggedIn, loginData } = useSelector<StoreState, UserState>(
     (state) => state.user
@@ -363,48 +362,44 @@ const UserDocuments = () => {
   return (
     <div css={styles.userDocuments}>
       {contextHolder}
-      <div css={styles.heading}>
-        <p css={{ ...typography.H5_20_bold, color: colors.Zeb_Solid_Dark }}>
-          Your Documents
-        </p>
-        <div>
-          <Button
-            style={{ marginRight: "10px" }}
-            type="secondary"
-            onClick={() => setVerifyDocOpen(true)}
-            disabled={!isLoggedIn}
-          >
-            Verify Document
-          </Button>
 
-          <Button
-            type="primary"
-            onClick={() => {
-              setOpenDrawer(true);
-            }}
-            style={{ height: "fit-content" }}
-            disabled={kycVerified !== 2 || !isLoggedIn}
-          >
-            Upload +
-          </Button>
-        </div>
+      <div
+        css={{
+          position: "absolute",
+          right: utils.remConverter(40),
+          display: "flex",
+        }}
+      >
+        <Button
+          style={{ marginRight: "10px" }}
+          type="tertiary"
+          size="small"
+          onClick={() => setVerifyDocOpen(true)}
+          disabled={!isLoggedIn}
+        >
+          Verify Document
+        </Button>
+
+        <Button
+          type="purple"
+          onClick={() => {
+            setOpenDrawer(true);
+          }}
+          size="small"
+          style={{ height: "fit-content" }}
+          // disabled={kycVerified !== 2 || !isLoggedIn}
+        >
+          Upload +
+        </Button>
       </div>
-      <div>
-        {kycVerified === 0 && (
-          <div css={styles.uploadKyc}>
-            {isLoggedIn
-              ? "Please Verify Your Kyc . To fill some of the details"
-              : "Please Login to continue..."}
-          </div>
-        )}
-      </div>
+
       <Tabs
         defaultActiveKey="1"
         items={[
           {
             key: "1",
             label: (
-              <div>
+              <div css={{ color: colors.Zeb_Solid_White }}>
                 ALL SIGNED <span css={styles.contractCount}>{all.length}</span>
               </div>
             ),
@@ -412,9 +407,9 @@ const UserDocuments = () => {
               loadingComponent
             ) : (
               <Table
-                tableBackgroundColor="#F5F5F5"
+                tableBackgroundColor={colors.Zeb_Card_Background_Dark}
                 customTableBorder="border-top:1px"
-                headerBgColor="#FFFFFF"
+                headerBgColor={colors.Zeb_Card_Background_Dark}
                 columnsConfig="50px 2fr 1fr 2fr 2fr 1fr"
                 header={[
                   "Sr.",
@@ -430,13 +425,25 @@ const UserDocuments = () => {
                 onPageNumberChanged={function noRefCheck() {}}
                 onRowClick={function noRefCheck() {}}
                 pageSize={4}
+                customLoadingContent={<p>guygu</p>}
+                customNoDataComponent={
+                  <div css={styles.emptyState}>
+                    <Image
+                      src={AssetsImg.ic_sadDocument}
+                      css={styles.sadDoc}
+                      alt="sadDocument"
+                    />
+                    <Image src={AssetsImg.ic_halfMoon} alt="halfMoon" />
+                    <p css={styles.emptyText}>No Data</p>
+                  </div>
+                }
               />
             ),
           },
           {
             key: "2",
             label: (
-              <div>
+              <div css={{ color: colors.Zeb_Solid_White }}>
                 SIGNED <span css={styles.contractCount}>{signed.length}</span>
               </div>
             ),
@@ -468,7 +475,7 @@ const UserDocuments = () => {
           {
             key: "3",
             label: (
-              <div>
+              <div css={{ color: colors.Zeb_Solid_White }}>
                 PENDING <span css={styles.contractCount}>{pending.length}</span>
               </div>
             ),

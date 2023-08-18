@@ -28,7 +28,6 @@ const SideBar: React.FC<SideBarProps> = ({ selected }) => {
       {
         content: "Profile",
         id: "profile",
-        isDisabled: true,
         icon: <UserOutlined />,
       },
       { content: "KYC", id: "kyc", icon: <UserAddOutlined /> },

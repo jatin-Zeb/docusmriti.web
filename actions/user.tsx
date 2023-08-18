@@ -4,7 +4,7 @@ import { ActionType } from "../reducers/userInfo";
 import { GoogleLoginData } from "../typings/login";
 import axios from "axios";
 
-const BASE_URL = "https://rose-ill-clownfish.cyclic.app";
+const BASE_URL = "https://rose-ill-clownfish.cyclic.app/v1";
 
 export const setUserAddress = (address: string) => {
   actionCreator(
@@ -12,11 +12,11 @@ export const setUserAddress = (address: string) => {
     async (dispatch: Dispatch): Promise<void> => {
       dispatch({
         type: ActionType.SET_USER_ADDRESS,
-        payload: address
+        payload: address,
       });
     }
   );
-}
+};
 
 export const setIsLoggedIn = (state: boolean) => {
   actionCreator(
@@ -24,11 +24,11 @@ export const setIsLoggedIn = (state: boolean) => {
     async (dispatch: Dispatch): Promise<void> => {
       dispatch({
         type: ActionType.SET_LOGIN,
-        payload: state
+        payload: state,
       });
     }
   );
-}
+};
 
 export const setGoogleLoginData = (data: GoogleLoginData | null) => {
   actionCreator(
@@ -36,11 +36,11 @@ export const setGoogleLoginData = (data: GoogleLoginData | null) => {
     async (dispatch: Dispatch): Promise<void> => {
       dispatch({
         type: ActionType.SET_GOOGLE_DATA,
-        payload: data
-      })
+        payload: data,
+      });
     }
-  )
-}
+  );
+};
 
 export const getLoginDetails = async (token: string) => {
   actionCreator(
@@ -49,20 +49,20 @@ export const getLoginDetails = async (token: string) => {
       try {
         const response = await axios(BASE_URL + "/login", {
           headers: {
-            "Authorization": "Bearer " + token
+            Authorization: "Bearer " + token,
           },
-          method: "POST"
-        })
+          method: "POST",
+        });
         dispatch({
           type: ActionType.SET_LOGIN_DATA,
-          payload: response.data.data
-        })
+          payload: response.data.data,
+        });
       } catch (e) {
         dispatch({
           type: ActionType.SET_LOGIN_DATA,
-          payload: null
-        })
+          payload: null,
+        });
       }
     }
-  )
-}
+  );
+};

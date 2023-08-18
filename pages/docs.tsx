@@ -2,11 +2,10 @@
 
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SideBar from "../components/SideBar";
-import UserDocuments from "../components/UserHome/UserDocuments";
+import SideBar from "../components/SideBar";;
 import TopBar from "../components/TopBar";
+import Header from "../components/Header";
+import UserDocuments from "../components/UserHome/UserDocuments";
 
 const Docs: NextPage = () => {
   const [openSideDrawer, setOpenSideDrawer] = useState<boolean>(false);
@@ -17,19 +16,18 @@ const Docs: NextPage = () => {
 
     })
   return (
-    <div style={{ background:"#F5F5F5"}}>
-      <TopBar selected="docs" />
+    <div style={{ background:"#F5F5F5",display:"flex"}}>
+    
         <SideBar   selected="docs"/>
-        
-        {/* <Header />
-        <div css={{display:"flex"}}>
-        <div css={{width:openSideDrawer? "90%":"95%",justifyContent:"end", transition:"0.2s all ease-in",marginLeft:"auto"}}>        
-            <div css={{ display: "flex",   padding: "10px 40px",   justifyContent: "space-between"}}>
-              <UserDocuments/>
-            </div>
+        <div>
+        <TopBar selected="docs" />
+        <UserDocuments/>
         </div>
-        </div>
-        <Footer /> */}
+    
+
+
+
+
     </div>
   );
 };
