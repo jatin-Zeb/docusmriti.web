@@ -451,9 +451,9 @@ const UserDocuments = () => {
               loadingComponent
             ) : (
               <Table
-                tableBackgroundColor="#F5F5F5"
+                tableBackgroundColor={colors.Zeb_Card_Background_Dark}
                 customTableBorder="border-top:1px"
-                headerBgColor="#FFFFFF"
+                headerBgColor={colors.Zeb_Card_Background_Dark}
                 columnsConfig="50px 2fr 1fr 2fr 2fr 1fr"
                 header={[
                   "Sr.",
@@ -469,6 +469,17 @@ const UserDocuments = () => {
                 onPageNumberChanged={function noRefCheck() {}}
                 onRowClick={function noRefCheck() {}}
                 pageSize={4}
+                customNoDataComponent={
+                  <div css={styles.emptyState}>
+                    <Image
+                      src={AssetsImg.ic_sadDocument}
+                      css={styles.sadDoc}
+                      alt="sadDocument"
+                    />
+                    <Image src={AssetsImg.ic_halfMoon} alt="halfMoon" />
+                    <p css={styles.emptyText}>No Data</p>
+                  </div>
+                }
               />
             ),
           },
@@ -483,9 +494,9 @@ const UserDocuments = () => {
               loadingComponent
             ) : (
               <Table
-                tableBackgroundColor="#F5F5F5"
+                tableBackgroundColor={colors.Zeb_Card_Background_Dark}
                 customTableBorder="border-top:1px"
-                headerBgColor="#FFFFFF"
+                headerBgColor={colors.Zeb_Card_Background_Dark}
                 columnsConfig="50px 2fr 1fr 2fr 2fr 1fr"
                 header={[
                   "Sr.",
@@ -501,6 +512,17 @@ const UserDocuments = () => {
                 onPageNumberChanged={function noRefCheck() {}}
                 onRowClick={function noRefCheck() {}}
                 pageSize={4}
+                customNoDataComponent={
+                  <div css={styles.emptyState}>
+                    <Image
+                      src={AssetsImg.ic_sadDocument}
+                      css={styles.sadDoc}
+                      alt="sadDocument"
+                    />
+                    <Image src={AssetsImg.ic_halfMoon} alt="halfMoon" />
+                    <p css={styles.emptyText}>No Data</p>
+                  </div>
+                }
               />
             ),
           },
