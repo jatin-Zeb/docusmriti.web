@@ -4,7 +4,7 @@ import { ActionType, UploadedDocsProps } from "../reducers/docs";
 import { NewDoc } from "../typings/docs";
 import axios from "axios";
 
-const BASE_URL = "https://rose-ill-clownfish.cyclic.app";
+const BASE_URL = "https://rose-ill-clownfish.cyclic.app/v1";
 
 export const setUserDocs = (docs: UploadedDocsProps) => {
   actionCreator(
@@ -22,31 +22,31 @@ export const addNewContract = async (doc: NewDoc, token: string) => {
   try {
     const response = await axios(BASE_URL + "/addContract", {
       headers: {
-        "Authorization": "Bearer " + token
+        Authorization: "Bearer " + token,
       },
       method: "POST",
-      data: doc
+      data: doc,
     });
     return response.data.data;
   } catch (e) {
     return e;
   }
-}
+};
 
 export const acceptContract = async (sha256: string, token: string) => {
   try {
     const response = await axios(BASE_URL + "/acceptContract", {
       headers: {
-        "Authorization": "Bearer " + token
+        Authorization: "Bearer " + token,
       },
       method: "POST",
-      data: { sha256: sha256 }
+      data: { sha256: sha256 },
     });
     return response.data.data;
   } catch (e) {
     return e;
   }
-}
+};
 
 export const setDocumentsLoading = (state: boolean) => {
   actionCreator(
@@ -58,4 +58,4 @@ export const setDocumentsLoading = (state: boolean) => {
       });
     }
   );
-} 
+};

@@ -1,5 +1,4 @@
-
-@import url('https://fonts.cdnfonts.com/css/exo-2');
+@import url("https://fonts.cdnfonts.com/css/exo-2");
 
 html,
 body {
@@ -10,8 +9,8 @@ body {
 }
 
 @font-face {
-  font-family: "Exo 2" ;
-  src: url('https://fonts.cdnfonts.com/css/exo-2') format("woff2");
+  font-family: "Exo 2";
+  src: url("https://fonts.cdnfonts.com/css/exo-2") format("woff2");
 }
 
 a {
@@ -30,9 +29,11 @@ body {
   color: #e7e8e8;
   background: #0f1318;
 }
-
+p {
+  margin: auto;
+}
 .razorpay-backdrop {
-  background-color: #00F0F810 !important;
+  background-color: #00f0f810 !important;
 }
 
 .razorpay-container iframe {

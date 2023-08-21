@@ -6,6 +6,9 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import UserDetails from "../components/UserProfile/UserDetails";
+import TopBar from "../components/TopBar";
+import UserDocs from "../components/UserProfileNew";
+import UserProfile from "../components/UserProfileNew";
 
 const Profile: NextPage = () => {
   const [openSideDrawer, setOpenSideDrawer] = useState<boolean>(false);
@@ -15,8 +18,14 @@ const Profile: NextPage = () => {
         //call api for stored document when user is successful  
     })
   return (
-    <div style={{ background:"#F5F5F5"}}>
-      <Header />
+    <div style={{ background:"#F5F5F5",display:"flex"}}>
+    
+    <SideBar   selected="profile"/>
+    <div>
+    <TopBar selected="profile" />
+    <UserProfile/>
+    </div>
+      {/* <Header />
       <div css={{display:"flex"}}>
         <SideBar expand={openSideDrawer} toggleExpand={()=>{setOpenSideDrawer(prev=>!prev)}} selected="profile"/>
         <div css={{width:openSideDrawer? "90%":"95%",justifyContent:"end", transition:"0.2s all ease-in",marginLeft:"auto"}}>
@@ -25,7 +34,7 @@ const Profile: NextPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer /> */}
     </div>
   );
 };

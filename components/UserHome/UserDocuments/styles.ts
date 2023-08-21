@@ -1,19 +1,11 @@
 import { css } from "@emotion/react";
-import { colors, mixins, typography } from "../../../styles1";
+import { colors, typography, utils } from "../../../styles1";
 
 export const userDocuments = css({
-  width: "100%",
-  border: `0.5px solid ${colors.Zeb_Border_Grey}`,
-  borderRadius: "30px",
-  height: "85vh",
-  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-  padding: "25px 40px",
-});
-
-export const heading = css({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
+  background: colors.Zeb_Dark_Background,
+  height: "94vh",
+  width: "85vw",
+  padding: utils.remConverter(40),
 });
 
 export const contractCount = css({
@@ -63,27 +55,33 @@ export const submitContainer = css({
   },
 });
 
-export const uploadKyc = css({
-  ...typography.B5_14_semibold,
-  margin: "16px 0px",
-  marginTop: "-4px",
-  padding: "8px 10px",
-  background: colors.Zeb_BG_Light_Blue,
-  borderRadius: "20px",
-  color: colors.Zeb_Solid_Blue,
-  cursor: "pointer",
-  border: `1px solid ${colors.Zeb_BG_Light_Blue} `,
-});
-
 export const modalPayment = css({
   display: "flex",
-  justifyContent: "space-around"
-})
+  justifyContent: "space-around",
+});
 
 export const loader = css({
   display: "flex",
   height: "350px",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "center"
-})
+  alignItems: "center",
+});
+
+export const emptyState = css({
+  position: "relative",
+  margin: utils.remConverter(100),
+});
+
+export const sadDoc = css({
+  fontSize: utils.remConverter(20),
+  position: "absolute",
+  top: 20,
+});
+
+export const emptyText = css({
+  ...typography.H3_Title_25,
+  position: "absolute",
+  color: colors.Zeb_Solid_White,
+  bottom: 40,
+});
