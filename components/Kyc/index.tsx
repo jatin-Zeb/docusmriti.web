@@ -261,7 +261,7 @@ const KycHome: React.FC = () => {
     }
   }, [step, aadhar, selfie]);
   return (
-    <div css={styles.addKyc}>
+    <div css={styles.kycMainPage}>
       {kycData && kycData.aadhaar_number.length ? (
         <div
           css={{
@@ -314,8 +314,34 @@ const KycHome: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div>
-          <Typography.Title level={4}>Add KYC</Typography.Title>
+        <div css={styles.kycMainData}>
+          <div css={styles.kycStatusBox}>
+            <p css={styles.kycHeading}>KYC Verification Pending</p>
+            <p css={styles.kycSub}>
+              we kindly request you to verify your KYC information. Completing
+              the KYC verification process ensures a secure and compliant
+              environment for all users.
+            </p>
+            <Steps
+              direction="vertical"
+              current={-1}
+              items={[
+                {
+                  title: <p css={styles.stepper}>Personal Details</p>,
+                },
+                {
+                  title: <p css={styles.stepper}>Upload Aadhar</p>,
+                },
+                {
+                  title: <p css={styles.stepper}>Add Selfie</p>,
+                },
+                {
+                  title: <p css={styles.stepper}>Done</p>,
+                },
+              ]}
+            />
+          </div>
+          {/* <Typography.Title level={4}>Add KYC</Typography.Title>
           <Steps
             css={{ width: "100%" }}
             current={step}
@@ -333,8 +359,8 @@ const KycHome: React.FC = () => {
                 title: "Done",
               },
             ]}
-          />
-          <div css={{ marginTop: "20px" }}>{stepperContent()}</div>
+          /> */}
+          {/* <div css={{ marginTop: "20px" }}>{stepperContent()}</div> */}
         </div>
       )}
     </div>

@@ -7,6 +7,7 @@ import * as styles from "./styles";
 import { blobToSHA256 } from "file-to-sha256";
 import { ContractContextType } from "../Contract/context";
 import { contractContext } from "../../UserHome/Contract";
+import { colors } from "../../../styles1";
 
 const VerifyDoc: React.FC = () => {
   const [docsFound, setDocsFound] = useState();
@@ -46,18 +47,26 @@ const VerifyDoc: React.FC = () => {
       >
         <Form.Item>
           <Upload
+            style={{
+              background: colors.Zeb_Card_Background_Dark,
+              border: `1px dashed ${colors.Zeb_Divider_Purple}`,
+              boxShadow: "-25px 0px 200px 0px rgba(255, 255, 255, 0.05)",
+            }}
             onChange={(file) => {
               setUploadedDocument(file);
               setShowState(false);
             }}
           />
         </Form.Item>
-        <Form.Item style={{ display: "flex", justifyContent: "center" }}>
+        <Form.Item
+          style={{ display: "flex", justifyContent: "center", width: "100%" }}
+        >
           <Button
             disabled={false}
             type="primary"
             typeAttribute="submit"
             onClick={() => {}}
+            style={{ width: "100%" }}
           >
             Submit
           </Button>

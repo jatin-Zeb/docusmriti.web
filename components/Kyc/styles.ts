@@ -1,6 +1,41 @@
 import { css } from "@emotion/react";
-import { colors, typography } from "../../styles1";
+import { colors, typography, utils } from "../../styles1";
 
+export const kycMainPage = css({
+  background: colors.Zeb_Dark_Background,
+  padding: utils.remConverter(40),
+  height: "94vh",
+});
+
+export const kycMainData = css({
+  padding: utils.remConverter(40),
+  background: colors.Zeb_Card_Background_Dark,
+  border: `1px solid ${colors.Zeb_Divider_Purple}`,
+  borderRadius: utils.remConverter(10),
+  display: "flex",
+  gap: utils.remConverter(86),
+});
+
+export const kycStatusBox = css({
+  borderRadius: `${utils.remConverter(10)} 0rem 0rem ${utils.remConverter(10)}`,
+  background: colors.Zeb_Primary_Purple,
+  padding: `${utils.remConverter(129)} ${utils.remConverter(59)}`,
+});
+
+export const kycHeading = css({
+  ...typography.H2_Title_35,
+  marginBottom: utils.remConverter(30),
+});
+
+export const kycSub = css({
+  ...typography.Paragraph_16,
+  marginBottom: utils.remConverter(40),
+});
+
+export const stepper = css({
+  ...typography.Paragraph_16,
+  color: colors.Zeb_Solid_White,
+});
 export const addKyc = css({
   boxShadow: "0px 2px 2px 0px rgba(0, 0, 0, 0.25)",
   padding: "1px 40px 36px 40px",

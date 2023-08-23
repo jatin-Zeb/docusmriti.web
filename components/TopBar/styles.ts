@@ -21,3 +21,13 @@ export const profile = css({
   display: "flex",
   alignItems: "center",
 });
+
+export const profileContainer = css({
+  display: "flex",
+  gap: utils.remConverter(15),
+  alignItems: "center",
+});
+
+export const name = css({
+  ...typography.Paragraph_16,
+});
