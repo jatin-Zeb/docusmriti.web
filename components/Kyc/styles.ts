@@ -5,6 +5,7 @@ export const kycMainPage = css({
   background: colors.Zeb_Dark_Background,
   padding: utils.remConverter(40),
   height: "94vh",
+  width: "85vw",
 });
 
 export const kycMainData = css({
@@ -14,12 +15,18 @@ export const kycMainData = css({
   borderRadius: utils.remConverter(10),
   display: "flex",
   gap: utils.remConverter(86),
+  alignItems: "center",
 });
 
 export const kycStatusBox = css({
   borderRadius: `${utils.remConverter(10)} 0rem 0rem ${utils.remConverter(10)}`,
   background: colors.Zeb_Primary_Purple,
   padding: `${utils.remConverter(129)} ${utils.remConverter(59)}`,
+  ".ant-steps-item-icon": {
+    background: `${colors.Zeb_Solid_White} !important`,
+    color: "black !important",
+  },
+  width: "50%",
 });
 
 export const kycHeading = css({

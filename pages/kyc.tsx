@@ -20,7 +20,7 @@ const Kyc: NextPage = () => {
         <SideBar   selected="kyc"/>
         <div>
         <TopBar selected="Kyc" />
-    <KycHome />
+        <KycHome />
         </div>
     
 

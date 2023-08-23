@@ -51,7 +51,6 @@ const TopBar: React.FC<TopBarProps> = ({ selected }) => {
         });
     }
   }, [googleToken, router]);
-  console.log(userState);
   return (
     <div css={styles.topBar}>
       <div css={styles.text}>{selected}</div>

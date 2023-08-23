@@ -67,7 +67,7 @@ const UserDocuments = () => {
   const { isLoggedIn, loginData } = useSelector<StoreState, UserState>(
     (state) => state.user
   );
-  console.log(isLoggedIn);
+
   const [form] = Form.useForm();
   const { kycVerified } = useSelector<StoreState, KYCDocs>(
     (state) => state.kyc
@@ -92,9 +92,7 @@ const UserDocuments = () => {
     statuses: [],
     sha: "",
   });
-  useEffect(() => {
-    console.log(verifyDocOpen);
-  }, [verifyDocOpen]);
+
   const [modalType, setModalType] = useState(ModalType.VIEW_PARTICIPANTS);
   const connectToWallet = async () => {
     await fetchWalletInfo();

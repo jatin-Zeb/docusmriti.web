@@ -15,6 +15,7 @@ import { UserState } from "../../reducers/userInfo";
 import { KycReqData } from "../../typings/kycDocs";
 import { uploadKycDetails } from "../../actions/kyc";
 import { useRouter } from "next/router";
+import AssetsImg from "@public/index";
 
 export enum KycPage {
   KycForm,
@@ -37,7 +38,7 @@ export interface KycDetails {
 }
 
 const KycHome: React.FC = () => {
-  const [step, setStep] = useState<number>(0);
+  const [step, setStep] = useState<number>(-1);
   const [selfie, setSelfie] = useState("");
   const [loading, setLoading] = useState(false);
   const { kycData } = useSelector<StoreState, KYCDocs>((state) => state.kyc);
@@ -324,23 +325,24 @@ const KycHome: React.FC = () => {
             </p>
             <Steps
               direction="vertical"
-              current={-1}
+              current={step}
               items={[
                 {
-                  title: <p css={styles.stepper}>Personal Details</p>,
+                  title: <span css={styles.stepper}>Personal Details</span>,
                 },
                 {
-                  title: <p css={styles.stepper}>Upload Aadhar</p>,
+                  title: <span css={styles.stepper}>Upload Aadhar</span>,
                 },
                 {
-                  title: <p css={styles.stepper}>Add Selfie</p>,
+                  title: <span css={styles.stepper}>Add Selfie</span>,
                 },
                 {
-                  title: <p css={styles.stepper}>Done</p>,
+                  title: <span css={styles.stepper}>Done</span>,
                 },
               ]}
             />
           </div>
+          <Image src={AssetsImg.i_kycBanner} alt="kycBanner" />
           {/* <Typography.Title level={4}>Add KYC</Typography.Title>
           <Steps
             css={{ width: "100%" }}
