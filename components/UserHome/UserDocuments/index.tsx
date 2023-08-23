@@ -67,6 +67,7 @@ const UserDocuments = () => {
   const { isLoggedIn, loginData } = useSelector<StoreState, UserState>(
     (state) => state.user
   );
+
   const [form] = Form.useForm();
   const { kycVerified } = useSelector<StoreState, KYCDocs>(
     (state) => state.kyc
@@ -91,6 +92,7 @@ const UserDocuments = () => {
     statuses: [],
     sha: "",
   });
+
   const [modalType, setModalType] = useState(ModalType.VIEW_PARTICIPANTS);
   const connectToWallet = async () => {
     await fetchWalletInfo();
@@ -368,13 +370,17 @@ const UserDocuments = () => {
           position: "absolute",
           right: utils.remConverter(40),
           display: "flex",
+          zIndex: 10,
         }}
       >
         <Button
           style={{ marginRight: "10px" }}
           type="tertiary"
           size="small"
-          onClick={() => setVerifyDocOpen(true)}
+          onClick={() => {
+            setVerifyDocOpen(true);
+          }}
+          typeAttribute="button"
           disabled={!isLoggedIn}
         >
           Verify Document
@@ -387,7 +393,7 @@ const UserDocuments = () => {
           }}
           size="small"
           style={{ height: "fit-content" }}
-          // disabled={kycVerified !== 2 || !isLoggedIn}
+          disabled={!isLoggedIn}
         >
           Upload +
         </Button>
@@ -532,8 +538,14 @@ const UserDocuments = () => {
 
       <Drawer
         open={verifyDocOpen}
+        width={"30%"}
         onClose={() => setVerifyDocOpen(false)}
-        title="Verify Document"
+        title={<p css={styles.headerStyle}>Verify Document</p>}
+        bodyStyle={{ background: colors.Zeb_Card_Background_Dark }}
+        headerStyle={{
+          background: colors.Zeb_Card_Background_Dark,
+        }}
+        closeIcon={false}
       >
         <VerifyDoc />
       </Drawer>
@@ -544,132 +556,178 @@ const UserDocuments = () => {
         onClose={() => {
           setOpenDrawer(false);
         }}
+        title={<p css={styles.headerStyle}>Upload Document</p>}
+        bodyStyle={{
+          background: colors.Zeb_Card_Background_Dark,
+        }}
+        headerStyle={{
+          background: colors.Zeb_Card_Background_Dark,
+        }}
       >
-        <Spin spinning={loading}>
-          <div css={mixins.textAlignmentCenter}>
-            <UploadOutlined
-              css={{ fontSize: "40px", color: colors.Zeb_Solid_Midnight }}
-            />
-            <Typography.Title level={3}>Upload Document</Typography.Title>
-          </div>
-
-          <Form
-            name="basic"
-            labelCol={{ span: 8 }}
-            style={{ maxWidth: 600 }}
-            initialValues={{ remember: true }}
-            onFinish={onFinish}
-            form={form}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-            layout="vertical"
-          >
-            <Form.Item
-              label="Document Title"
-              name="Name"
-              rules={[{ required: true, message: "Please input your Name!" }]}
+        <div
+          css={{
+            label: {
+              color: `${colors.Zeb_Secondary_Text} !important`,
+            },
+            input: {
+              background: colors.Zeb_Card_Background_Dark,
+              border: `1px solid ${colors.Zeb_Divider_Purple}`,
+              color: colors.Zeb_Solid_White,
+            },
+            textarea: {
+              background: colors.Zeb_Card_Background_Dark,
+              border: `1px solid ${colors.Zeb_Divider_Purple}`,
+              color: colors.Zeb_Solid_White,
+            },
+          }}
+        >
+          <Spin spinning={loading}>
+            <Form
+              name="basic"
+              labelCol={{ span: 8 }}
+              style={{ maxWidth: 600 }}
+              initialValues={{ remember: true }}
+              onFinish={onFinish}
+              form={form}
+              onFinishFailed={onFinishFailed}
+              autoComplete="off"
+              layout="vertical"
             >
-              <Input />
-            </Form.Item>
-
-            <Form.Item
-              label="Email"
-              name="Email"
-              preserve={true}
-              initialValue={loginData?.email}
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your Email!",
-                  type: "email",
-                },
-              ]}
-            >
-              <Input value={loginData?.email} disabled />
-            </Form.Item>
-            <Form.Item
-              name="DateRange"
-              label="Contract Validity Date"
-              rules={[{ required: true, message: "Select date range!" }]}
-            >
-              <DatePicker.RangePicker />
-            </Form.Item>
-            <Form.Item
-              label="Category"
-              name="Category"
-              rules={[{ required: true, message: "Enter Category" }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name="Description"
-              label="Description"
-              rules={[{ required: true, message: "Enter Description" }]}
-            >
-              <Input.TextArea rows={4} />
-            </Form.Item>
-            {[...Array(participantsLength)].map((val, key) => (
-              <div key={key} css={styles.participantInput}>
-                <Image
-                  css={styles.cross}
-                  src={crossImg}
-                  height={20}
-                  width={25}
-                  alt=""
-                  onClick={() => setParticipantsLength(participantsLength - 1)}
-                />
-                <Form.Item
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input Email!",
-                      type: "email",
-                    },
-                  ]}
-                  label={`Email Address ${key + 1}`}
-                  name={`emailAddress${key + 1}`}
-                >
-                  <Input />
-                </Form.Item>
-              </div>
-            ))}
-            {participantsLength < 3 && (
-              <div
-                css={styles.addParticipant}
-                onClick={() => setParticipantsLength(participantsLength + 1)}
+              <Form.Item
+                label="Document Title"
+                name="Name"
+                rules={[{ required: true, message: "Please input your Name!" }]}
               >
-                Add Participant+
-              </div>
-            )}
-            <Form.Item name="UploadedFile" label="Dragger">
-              <Upload
-                descriptionText="Only .jpeg files are accepted"
-                onChange={(file) => {
-                  setUploadedDocument(file);
-                }}
-                theme="withIcon"
-              />
-            </Form.Item>
-            <Form.Item wrapperCol={{ flex: "auto" }}>
-              <div css={styles.submitContainer}>
-                <Button
-                  type="secondary"
-                  typeAttribute="submit"
-                  onClick={() => setSubmitButton("Fiat")}
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Email"
+                name="Email"
+                preserve={true}
+                initialValue={loginData?.email}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your Email!",
+                    type: "email",
+                  },
+                ]}
+              >
+                <Input
+                  value={loginData?.email}
+                  disabled
+                  style={{
+                    background: colors.Zeb_Card_Background_Dark,
+                    border: `1px solid ${colors.Zeb_Divider_Purple}`,
+                    color: colors.Zeb_Solid_White,
+                  }}
+                />
+              </Form.Item>
+              <Form.Item
+                name="DateRange"
+                label="Contract Validity Date"
+                rules={[{ required: true, message: "Select date range!" }]}
+              >
+                <DatePicker.RangePicker
+                  style={{
+                    background: colors.Zeb_Card_Background_Dark,
+                    border: `1px solid ${colors.Zeb_Divider_Purple}`,
+                    color: colors.Zeb_Solid_White,
+                  }}
+                />
+              </Form.Item>
+              <Form.Item
+                label="Category"
+                name="Category"
+                rules={[{ required: true, message: "Enter Category" }]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                name="Description"
+                label="Description"
+                rules={[{ required: true, message: "Enter Description" }]}
+              >
+                <Input.TextArea rows={4} />
+              </Form.Item>
+              {participantsLength < 5 && (
+                <div
+                  css={styles.addParticipant}
+                  onClick={() => setParticipantsLength(participantsLength + 1)}
                 >
-                  Pay via FIAT
-                </Button>
-                <Button
-                  type="primary"
-                  typeAttribute="submit"
-                  onClick={() => setSubmitButton("Metamask")}
-                >
-                  Pay via Metamask
-                </Button>
-              </div>
-            </Form.Item>
-          </Form>
-        </Spin>
+                  Add Participant +
+                </div>
+              )}
+              {[...Array(participantsLength)].map((val, key) => (
+                <div key={key} css={styles.participantInput}>
+                  <Form.Item
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input Email!",
+                        type: "email",
+                      },
+                    ]}
+                    label={`Email Address ${key + 1}`}
+                    name={`emailAddress${key + 1}`}
+                  >
+                    <Input
+                      addonAfter={
+                        <Image
+                          css={styles.cross}
+                          src={crossImg}
+                          height={20}
+                          width={25}
+                          alt=""
+                          onClick={() =>
+                            setParticipantsLength(participantsLength - 1)
+                          }
+                        />
+                      }
+                    />
+                  </Form.Item>
+                </div>
+              ))}
+
+              <Form.Item
+                name="UploadedFile"
+                label="Upload a Document to Verify it on Blockchain"
+              >
+                <Upload
+                  style={{
+                    background: colors.Zeb_Card_Background_Dark,
+                    border: `1px dashed ${colors.Zeb_Divider_Purple}`,
+                    boxShadow: "-25px 0px 200px 0px rgba(255, 255, 255, 0.05)",
+                  }}
+                  descriptionText="Recommendation: minimum of 350px by 350px"
+                  onChange={(file) => {
+                    setUploadedDocument(file);
+                  }}
+                  theme="withIcon"
+                />
+              </Form.Item>
+              <Form.Item wrapperCol={{ flex: "auto" }}>
+                <div css={styles.submitContainer}>
+                  <Button
+                    type="secondary"
+                    typeAttribute="submit"
+                    onClick={() => setSubmitButton("Fiat")}
+                  >
+                    Pay via FIAT
+                  </Button>
+                  <Button
+                    type="primary"
+                    typeAttribute="submit"
+                    onClick={() => setSubmitButton("Metamask")}
+                  >
+                    Pay via Metamask
+                  </Button>
+                </div>
+              </Form.Item>
+            </Form>
+          </Spin>
+        </div>
       </Drawer>
       <ToastContainer position="bottom-left" />
       <Modal

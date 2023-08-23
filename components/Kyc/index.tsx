@@ -15,6 +15,7 @@ import { UserState } from "../../reducers/userInfo";
 import { KycReqData } from "../../typings/kycDocs";
 import { uploadKycDetails } from "../../actions/kyc";
 import { useRouter } from "next/router";
+import AssetsImg from "@public/index";
 
 export enum KycPage {
   KycForm,
@@ -37,7 +38,7 @@ export interface KycDetails {
 }
 
 const KycHome: React.FC = () => {
-  const [step, setStep] = useState<number>(0);
+  const [step, setStep] = useState<number>(-1);
   const [selfie, setSelfie] = useState("");
   const [loading, setLoading] = useState(false);
   const { kycData } = useSelector<StoreState, KYCDocs>((state) => state.kyc);
@@ -261,7 +262,7 @@ const KycHome: React.FC = () => {
     }
   }, [step, aadhar, selfie]);
   return (
-    <div css={styles.addKyc}>
+    <div css={styles.kycMainPage}>
       {kycData && kycData.aadhaar_number.length ? (
         <div
           css={{
@@ -314,8 +315,35 @@ const KycHome: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div>
-          <Typography.Title level={4}>Add KYC</Typography.Title>
+        <div css={styles.kycMainData}>
+          <div css={styles.kycStatusBox}>
+            <p css={styles.kycHeading}>KYC Verification Pending</p>
+            <p css={styles.kycSub}>
+              we kindly request you to verify your KYC information. Completing
+              the KYC verification process ensures a secure and compliant
+              environment for all users.
+            </p>
+            <Steps
+              direction="vertical"
+              current={step}
+              items={[
+                {
+                  title: <span css={styles.stepper}>Personal Details</span>,
+                },
+                {
+                  title: <span css={styles.stepper}>Upload Aadhar</span>,
+                },
+                {
+                  title: <span css={styles.stepper}>Add Selfie</span>,
+                },
+                {
+                  title: <span css={styles.stepper}>Done</span>,
+                },
+              ]}
+            />
+          </div>
+          <Image src={AssetsImg.i_kycBanner} alt="kycBanner" />
+          {/* <Typography.Title level={4}>Add KYC</Typography.Title>
           <Steps
             css={{ width: "100%" }}
             current={step}
@@ -333,8 +361,8 @@ const KycHome: React.FC = () => {
                 title: "Done",
               },
             ]}
-          />
-          <div css={{ marginTop: "20px" }}>{stepperContent()}</div>
+          /> */}
+          {/* <div css={{ marginTop: "20px" }}>{stepperContent()}</div> */}
         </div>
       )}
     </div>

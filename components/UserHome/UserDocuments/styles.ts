@@ -25,23 +25,25 @@ export const truncate = css({
   overflow: "hidden",
 });
 export const addParticipant = css({
-  ...typography.B6_12_semibold,
-  color: colors.Zeb_Solid_Bright_Blue,
+  ...typography.Paragraph_16,
+  color: colors.Zeb_Secondary_Text,
   cursor: "pointer",
+  marginBottom: utils.remConverter(30),
+  padding: `${utils.remConverter(17)} ${utils.remConverter(20)}`,
+  border: `1px solid ${colors.Zeb_Divider_Purple}`,
+  background: colors.Zeb_Dark_Background,
+  borderRadius: utils.remConverter(5),
+  width: "fit-content",
 });
 
 export const participantInput = css({
-  background: colors.Zeb_Transparent_4,
-  padding: "10px",
-  borderRadius: "8px",
+  padding: utils.remConverter(10),
+  borderRadius: utils.remConverter(8),
   position: "relative",
-  marginBottom: "20px",
+  // marginBottom: utils.remConverter(20),
 });
 
 export const cross = css({
-  position: "absolute",
-  right: 10,
-  top: 10,
   cursor: "pointer",
 });
 
@@ -84,4 +86,10 @@ export const emptyText = css({
   position: "absolute",
   color: colors.Zeb_Solid_White,
   bottom: 40,
+});
+
+export const headerStyle = css({
+  ...typography.H3_Title_25,
+  color: colors.Zeb_Solid_White,
+  background: colors.Zeb_Card_Background_Dark,
 });
