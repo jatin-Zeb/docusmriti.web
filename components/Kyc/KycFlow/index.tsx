@@ -6,11 +6,12 @@ import { KycPage } from "..";
 interface KycFormProps {
   setKycPage: (val: KycPage) => void;
 }
-const KycForm: React.FC<KycFormProps> = ({ setKycPage }) => {
+const KycFlow: React.FC<KycFormProps> = ({ setKycPage }) => {
   const validateFields = (values: FormikValues) => {};
   const handleSubmit = () => {
     setKycPage(KycPage.UploadDocuments);
   };
+
   return (
     <div>
       <Typography variant="h1" color="#C0C0EE">
@@ -84,4 +85,4 @@ const KycForm: React.FC<KycFormProps> = ({ setKycPage }) => {
   );
 };
 
-export default KycForm;
+export default KycFlow;

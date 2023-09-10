@@ -1,9 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import * as styles from "./styles";
 import { useCallback, useState } from "react";
-import { DatePicker, Form, Input, Select, Steps, Typography } from "antd";
+import {
+  ConfigProvider,
+  DatePicker,
+  Form,
+  Input,
+  Select,
+  Steps,
+  Typography,
+} from "antd";
 import Button from "../Shared/Button";
-import { colors, mixins } from "../../styles1";
+import { colors, mixins, utils } from "../../styles1";
 import UploadAadhar from "./UploadAadhar";
 import AddSelfie from "./AddSelfie";
 import Image from "next/image";
@@ -16,6 +24,8 @@ import { KycReqData } from "../../typings/kycDocs";
 import { uploadKycDetails } from "../../actions/kyc";
 import { useRouter } from "next/router";
 import AssetsImg from "@public/index";
+import { css } from "@emotion/react";
+import CustomInput from "@components/Shared/Input";
 
 export enum KycPage {
   KycForm,
@@ -38,13 +48,14 @@ export interface KycDetails {
 }
 
 const KycHome: React.FC = () => {
-  const [step, setStep] = useState<number>(-1);
+  const [step, setStep] = useState<number>(0);
   const [selfie, setSelfie] = useState("");
   const [loading, setLoading] = useState(false);
   const { kycData } = useSelector<StoreState, KYCDocs>((state) => state.kyc);
   const { isLoggedIn } = useSelector<StoreState, UserState>(
     (state) => state.user
   );
+  const [isKycStarteed, setIsKycStarted] = useState(true);
   const router = useRouter();
   const [aadhar, setAadhar] = useState<Aadhar>({
     front: {} as FileList,
@@ -107,12 +118,26 @@ const KycHome: React.FC = () => {
       case 0:
         return (
           <div css={styles.kycStep}>
-            <Typography.Title
-              level={5}
-              style={{ color: colors.Zeb_Solid_Midnight, marginBottom: "10px" }}
+            <ConfigProvider theme={{}}>
+              <Typography.Title
+                level={2}
+                style={{
+                  color: colors.Zeb_Solid_White,
+                  marginBottom: utils.remConverter(20),
+                  marginTop: utils.remConverter(60),
+                }}
+              >
+                Personal Details
+              </Typography.Title>
+            </ConfigProvider>
+            <Typography.Paragraph
+              style={{
+                color: colors.Docu_Secondary_Text,
+                marginBottom: utils.remConverter(20),
+              }}
             >
-              Personal Details
-            </Typography.Title>
+              Fill out Your personal Details for to progress ahead
+            </Typography.Paragraph>
             <Form
               name="basic"
               initialValues={initialValues}
@@ -136,7 +161,7 @@ const KycHome: React.FC = () => {
                     required
                     css={{ width: "33%" }}
                   >
-                    <Input placeholder="Enter First Name" />
+                    <CustomInput placeholder="Enter First Name" />
                   </Form.Item>
                   <Form.Item
                     label="Last Name"
@@ -150,6 +175,7 @@ const KycHome: React.FC = () => {
                     ]}
                     required
                   >
+                    <CustomInput placeholder="Enter Last Name" />
                     <Input placeholder="Enter Last Name" />
                   </Form.Item>
                   <Form.Item
@@ -316,53 +342,71 @@ const KycHome: React.FC = () => {
         </div>
       ) : (
         <div css={styles.kycMainData}>
-          <div css={styles.kycStatusBox}>
-            <p css={styles.kycHeading}>KYC Verification Pending</p>
-            <p css={styles.kycSub}>
-              we kindly request you to verify your KYC information. Completing
-              the KYC verification process ensures a secure and compliant
-              environment for all users.
-            </p>
-            <Steps
-              direction="vertical"
-              current={step}
-              items={[
-                {
-                  title: <span css={styles.stepper}>Personal Details</span>,
-                },
-                {
-                  title: <span css={styles.stepper}>Upload Aadhar</span>,
-                },
-                {
-                  title: <span css={styles.stepper}>Add Selfie</span>,
-                },
-                {
-                  title: <span css={styles.stepper}>Done</span>,
-                },
-              ]}
-            />
-          </div>
-          <Image src={AssetsImg.i_kycBanner} alt="kycBanner" />
-          {/* <Typography.Title level={4}>Add KYC</Typography.Title>
-          <Steps
-            css={{ width: "100%" }}
-            current={step}
-            items={[
-              {
-                title: "Personal Details",
-              },
-              {
-                title: "Upload Aadhar",
-              },
-              {
-                title: "Add Selfie",
-              },
-              {
-                title: "Done",
-              },
-            ]}
-          /> */}
-          {/* <div css={{ marginTop: "20px" }}>{stepperContent()}</div> */}
+          {isKycStarteed ? (
+            <div css={{ width: "100%" }}>
+              <ConfigProvider
+                theme={{
+                  token: {
+                    colorText: colors.Zeb_Solid_White,
+                    colorTextDescription: colors.Zeb_Solid_White,
+                    colorPrimary: colors.Docu_Primary_Purple,
+                    colorFillContent: colors.Zeb_Divider_Purple,
+                    colorTextLabel: colors.Docu_Secondary_Text,
+                    colorSplit: colors.Zeb_Divider_Purple,
+                  },
+                }}
+              >
+                <Steps
+                  current={step}
+                  items={[
+                    {
+                      title: "Personal Details",
+                    },
+                    {
+                      title: "Upload Aadhar",
+                    },
+                    {
+                      title: "Add Selfie",
+                    },
+                    {
+                      title: "Done",
+                    },
+                  ]}
+                />
+              </ConfigProvider>
+              <div css={{ marginTop: "20px" }}>{stepperContent()}</div>
+            </div>
+          ) : (
+            <div>
+              <div css={styles.kycStatusBox}>
+                <p css={styles.kycHeading}>KYC Verification Pending</p>
+                <p css={styles.kycSub}>
+                  we kindly request you to verify your KYC information.
+                  Completing the KYC verification process ensures a secure and
+                  compliant environment for all users.
+                </p>
+                <Steps
+                  direction="vertical"
+                  current={step}
+                  items={[
+                    {
+                      title: <span css={styles.stepper}>Personal Details</span>,
+                    },
+                    {
+                      title: <span css={styles.stepper}>Upload Aadhar</span>,
+                    },
+                    {
+                      title: <span css={styles.stepper}>Add Selfie</span>,
+                    },
+                    {
+                      title: <span css={styles.stepper}>Done</span>,
+                    },
+                  ]}
+                />
+              </div>
+              <Image src={AssetsImg.i_kycBanner} alt="kycBanner" />
+            </div>
+          )}
         </div>
       )}
     </div>

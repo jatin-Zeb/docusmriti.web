@@ -51,12 +51,7 @@ export const addKyc = css({
   minHeight: "80%",
 });
 
-export const kycStep = css({
-  border: `1px solid ${colors.Zeb_Soild_LightGrey}`,
-  width: "100%",
-  padding: "1px 33px",
-  borderRadius: "10px",
-});
+export const kycStep = css({});
 
 export const kycComplete = css({
   background: colors.Zeb_Solid_White,
