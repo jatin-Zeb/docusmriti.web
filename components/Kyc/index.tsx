@@ -6,7 +6,9 @@ import {
   DatePicker,
   Form,
   Input,
+  InputNumber,
   Select,
+  Space,
   Steps,
   Typography,
 } from "antd";
@@ -24,8 +26,9 @@ import { KycReqData } from "../../typings/kycDocs";
 import { uploadKycDetails } from "../../actions/kyc";
 import { useRouter } from "next/router";
 import AssetsImg from "@public/index";
-import { css } from "@emotion/react";
+
 import CustomInput from "@components/Shared/Input";
+import FormItem from "@components/Shared/FormItem";
 
 export enum KycPage {
   KycForm,
@@ -48,7 +51,7 @@ export interface KycDetails {
 }
 
 const KycHome: React.FC = () => {
-  const [step, setStep] = useState<number>(0);
+  const [step, setStep] = useState<number>(2);
   const [selfie, setSelfie] = useState("");
   const [loading, setLoading] = useState(false);
   const { kycData } = useSelector<StoreState, KYCDocs>((state) => state.kyc);
@@ -149,7 +152,7 @@ const KycHome: React.FC = () => {
             >
               <div css={{ width: "100%" }}>
                 <div css={mixins.flexJustifiedBetween}>
-                  <Form.Item
+                  <FormItem
                     label="First Name"
                     name="firstName"
                     rules={[
@@ -159,11 +162,12 @@ const KycHome: React.FC = () => {
                       },
                     ]}
                     required
-                    css={{ width: "33%" }}
+                    css={{ width: "33%", color: colors.Docu_Secondary_Text }}
                   >
                     <CustomInput placeholder="Enter First Name" />
-                  </Form.Item>
-                  <Form.Item
+                  </FormItem>
+
+                  <FormItem
                     label="Last Name"
                     name="lastName"
                     css={{ width: "40%" }}
@@ -176,9 +180,9 @@ const KycHome: React.FC = () => {
                     required
                   >
                     <CustomInput placeholder="Enter Last Name" />
-                    <Input placeholder="Enter Last Name" />
-                  </Form.Item>
-                  <Form.Item
+                    {/* <Input placeholder="Enter Last Name" /> */}
+                  </FormItem>
+                  <FormItem
                     name="gender"
                     label="Gender"
                     required
@@ -190,14 +194,29 @@ const KycHome: React.FC = () => {
                     ]}
                     css={{ width: "25%" }}
                   >
-                    <Select placeholder="Gender">
-                      <Select.Option value="Male">Male</Select.Option>
-                      <Select.Option value="Female">Female</Select.Option>
-                    </Select>
-                  </Form.Item>
+                    <ConfigProvider
+                      theme={{
+                        token: {
+                          colorBgContainer: colors.Zeb_Card_Background_Dark,
+                          colorBorder: colors.Zeb_Divider_Purple,
+                          colorText: colors.Zeb_Solid_White,
+                          colorBgElevated: colors.Zeb_Card_Background_Dark,
+                          controlItemBgActive: colors.Docu_Secondary_Text,
+                          controlItemBgHover: colors.Zeb_Divider_Purple,
+                          colorTextPlaceholder:
+                            colors.Docu_Secondary_Placeholder,
+                        },
+                      }}
+                    >
+                      <Select placeholder="Gender">
+                        <Select.Option value="Male">Male</Select.Option>
+                        <Select.Option value="Female">Female</Select.Option>
+                      </Select>
+                    </ConfigProvider>
+                  </FormItem>
                 </div>
                 <div css={mixins.flexJustifiedBetween}>
-                  <Form.Item
+                  <FormItem
                     name="dob"
                     label="Date of Birth"
                     required
@@ -209,12 +228,25 @@ const KycHome: React.FC = () => {
                     ]}
                     css={{ width: "35%" }}
                   >
-                    <DatePicker
-                      placeholder="Choose Date"
-                      css={{ width: "100%" }}
-                    />
-                  </Form.Item>
-                  <Form.Item
+                    <ConfigProvider
+                      theme={{
+                        token: {
+                          colorBgContainer: colors.Zeb_Card_Background_Dark,
+                          colorBorder: colors.Zeb_Divider_Purple,
+                          colorText: colors.Zeb_Solid_White,
+                          colorBgElevated: colors.Zeb_Card_Background_Dark,
+                          colorTextPlaceholder:
+                            colors.Docu_Secondary_Placeholder,
+                        },
+                      }}
+                    >
+                      <DatePicker
+                        placeholder="Choose Date"
+                        css={{ width: "100%" }}
+                      />
+                    </ConfigProvider>
+                  </FormItem>
+                  <FormItem
                     name="aadhaarNumber"
                     label="Aadhaar Number"
                     required
@@ -226,11 +258,14 @@ const KycHome: React.FC = () => {
                     ]}
                     css={{ width: "62%" }}
                   >
-                    <Input type="number" placeholder="Enter Aadhar Number" />
-                  </Form.Item>
+                    <CustomInput
+                      type="number"
+                      placeholder="Enter Aadhar Number"
+                    />
+                  </FormItem>
                 </div>
               </div>
-              <Form.Item
+              <FormItem
                 style={{
                   // marginTop: "100px",
                   width: "100%",
@@ -240,7 +275,7 @@ const KycHome: React.FC = () => {
                 <Button type="blue" onClick={() => {}} typeAttribute="submit">
                   Next
                 </Button>
-              </Form.Item>
+              </FormItem>
             </Form>
           </div>
         );
@@ -257,13 +292,69 @@ const KycHome: React.FC = () => {
         break;
       case 2:
         return (
-          <AddSelfie
-            step={step}
-            setStep={setStep}
-            selfie={selfie}
-            setSelfie={setSelfie}
-            onSubmit={onKYCDetailsSubmit}
-          />
+          <div css={{ textAlign: "center" }}>
+            <p css={styles.otp}>Enter Otp</p>
+            <Space wrap>
+              <CustomInput
+                type="number"
+                size="large"
+                min={0}
+                max={9}
+                // onChange={onChange}
+              />
+              <CustomInput
+                type="number"
+                size="large"
+                min={0}
+                max={9}
+
+                // onChange={onChange}
+              />
+              <CustomInput
+                type="number"
+                size="large"
+                min={0}
+                max={9}
+                // onChange={onChange}
+              />
+              <CustomInput
+                type="number"
+                size="large"
+                min={0}
+                max={9}
+                // onChange={onChange}
+              />
+              <CustomInput
+                type="number"
+                size="large"
+                min={0}
+                max={9}
+                width={40}
+                height={40}
+                // onChange={onChange}
+              />
+            </Space>
+            <div
+              css={{
+                display: "flex",
+                marginBottom: utils.remConverter(160),
+                marginTop: utils.remConverter(30),
+              }}
+            >
+              <p css={styles.otp}>Didn't recieve OTP?</p>
+              <p css={styles.resend}>Resend</p>
+            </div>
+            <Button type="blue" onClick={() => {}} typeAttribute="submit">
+              Next
+            </Button>
+          </div>
+          // <AddSelfie
+          //   step={step}
+          //   setStep={setStep}
+          //   selfie={selfie}
+          //   setSelfie={setSelfie}
+          //   onSubmit={onKYCDetailsSubmit}
+          // />
         );
         break;
       case 3:

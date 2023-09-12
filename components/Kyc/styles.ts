@@ -68,3 +68,14 @@ export const heading = css({
   marginRight: "10px",
   width: "15%",
 });
+
+export const otp = css({
+  ...typography.Paragraph_16,
+  color: colors.Docu_Secondary_Text,
+  marginBottom: utils.remConverter(15),
+});
+
+export const resend = css({
+  color: colors.Zeb_Solid_White,
+  cursor: "pointer",
+});

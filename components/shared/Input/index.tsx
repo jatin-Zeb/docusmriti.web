@@ -12,6 +12,7 @@ const CustomInput: React.FC<InputProps> = (props) => {
           colorBgContainer: colors.Zeb_Card_Background_Dark,
           colorBorder: colors.Zeb_Divider_Purple,
           colorText: colors.Zeb_Solid_White,
+          colorTextPlaceholder: colors.Docu_Secondary_Placeholder,
         },
       }}
     >

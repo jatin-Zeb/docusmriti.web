@@ -69,6 +69,7 @@ const colors = {
   Docu_Seondary_Text: "#D5CDFB",
   Docu_Primary_Purple: "#431BEF",
   Docu_Secondary_Text: "#8F84C1",
+  Docu_Secondary_Placeholder: "rgba(143,132,193,0.5)",
 };
 
 export default colors;
